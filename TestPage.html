@@ -1,0 +1,66 @@
+<!Doctype html>
+<html>
+<head>
+    <script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript" src="src/Vector2Functional.js"></script>
+	<script type="text/javascript" src="src/Vector2FunctionalShared.js"></script>
+	<script type="text/javascript" src="src/Vector2Prototypal.js"></script>
+	<script type="text/javascript" src="src/Vector2Pseudoclassical.js"></script>
+</head>
+<body>
+    <div class="Functional">
+    	<h1>Functional</h1>
+    </div>
+     <div class="FunctionalShared">
+    	<h1>Functional shared</h1>
+    </div>
+    <div class="Prototypal">
+    	<h1>Prototypal</h1>
+    </div>
+     <div class="Pseudoclassical">
+    	<h1>Pseudoclassical</h1>
+    </div>
+	<script type="text/javascript">
+	    var vec2String = function(vec){
+	        return '[' + vec.x + ',' + vec.y + '] ,length(' + vec.length() + ')';
+	    };
+	    $(document).ready( function(){
+	    	var ax = 1;
+	    	var ay = 1;
+	    	var bx = 3;
+	    	var by = 3;
+
+	    	var pt1, pt2, vec12;
+
+			pt1 = Vector2FuncFactory(ax,ay);
+			$(".Functional").append("<p> pt1:" + vec2String(pt1) + "</p>");
+			pt2 = Vector2FuncFactory(bx,by);
+			$(".Functional").append("<p> pt2:" + vec2String(pt2) + "</p>");
+			vec12 = pt2.subtract(pt1);
+			$(".Functional").append("<p> vec12:" + vec2String(vec12) + "</p>");
+
+			pt1 = Vector2FuncSharedFactory(2*ax,2*ay);
+			$(".FunctionalShared").append("<p> pt1:" + vec2String(pt1) + "</p>");
+			pt2 = Vector2FuncSharedFactory(2*bx,2*by);
+			$(".FunctionalShared").append("<p> pt2:" + vec2String(pt2) + "</p>");
+			vec12 = pt2.subtract(pt1);
+			$(".FunctionalShared").append("<p> vec12:" + vec2String(vec12) + "</p>");
+
+			pt1 = Vector2FuncPrototypalFactory(ax,ay);
+			$(".Prototypal").append("<p> pt1:" + vec2String(pt1) + "</p>");
+			pt2 = Vector2FuncPrototypalFactory(bx,by);
+			$(".Prototypal").append("<p> pt2:" + vec2String(pt2) + "</p>");
+			vec12 = pt2.subtract(pt1);
+			$(".Prototypal").append("<p> vec12:" + vec2String(vec12) + "</p>");
+
+			pt1 = new Vector2(2*ax,2*ay);
+			$(".Pseudoclassical").append("<p> pt1:" + vec2String(pt1) + "</p>");
+			pt2 = new Vector2(2*bx,2*by);
+			$(".Pseudoclassical").append("<p> pt2:" + vec2String(pt2) + "</p>");
+			vec12 = pt2.subtract(pt1);
+			$(".Pseudoclassical").append("<p> vec12:" + vec2String(vec12) + "</p>");
+	    });
+		
+	</script>
+</body>
+</html>
